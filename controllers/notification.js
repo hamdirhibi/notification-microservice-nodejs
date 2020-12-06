@@ -48,7 +48,7 @@ exports.newNotification = async (req,res) =>{
 
 
 //get notiifcations by user
-exports.getNotificationsByUser = async (req,res) =>{
+exports.getNotifications = async (req,res) =>{
     try {
         const notifications = await Notification.find({
             user : req.userData.user._id,
@@ -61,15 +61,3 @@ exports.getNotificationsByUser = async (req,res) =>{
 }
 
 
-//get notiifcations by campany
-exports.getNotificationsByCampany = async (req,res) =>{
-    try {
-        const notifications = await Notification.find({
-            company : req.userData.user._id,
-        })
-        res.json(notifications);
-    }
-    catch(err){
-        res.json({message: err})
-    }
-}

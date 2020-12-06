@@ -7,8 +7,7 @@ const checkAuth = require("../middleware/checkAuth");
 
 
 router.post("/", checkAuth, notificationControlller.newNotification);
-router.get("/user/:id", checkAuth ,  notificationControlller.getNotificationsByUser);
-router.get("/company/:id", checkAuth ,  notificationControlller.getNotificationsByCampany);
+router.get("/:userId", checkAuth ,  notificationControlller.getNotifications);
 
 
 module.exports = router ; 
