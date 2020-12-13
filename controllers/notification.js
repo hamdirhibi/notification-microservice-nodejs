@@ -47,6 +47,17 @@ exports.newNotification = async (req,res) =>{
 }
 
 
+exports.getall = async (req,res) =>{
+    try {
+        const notifications = await Notification.find()
+        res.json(notifications)
+    }
+    catch(err){
+        res.json({message: err})
+    }
+}
+
+
 //get notiifcations by user
 exports.getNotifications = async (req,res) =>{
     try {
@@ -61,3 +72,22 @@ exports.getNotifications = async (req,res) =>{
 }
 
 
+
+
+exports.updateNotification = async (req,res) =>{
+    try {
+        
+        await  Notification.updateOne(
+            {_id : req.params.notificationId} ,
+             {
+                 $set : {
+                     seen : true
+                 }
+             }
+
+        )
+    }
+    catch(err){
+        res.json({message: err})
+    }
+}
